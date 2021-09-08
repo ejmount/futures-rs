@@ -56,7 +56,7 @@ mod allow_std;
 pub use self::allow_std::AllowStdIo;
 
 mod buf_reader;
-pub use self::buf_reader::BufReader;
+pub use self::buf_reader::{BufReader, SeeKRelative};
 
 mod buf_writer;
 pub use self::buf_writer::BufWriter;
@@ -575,7 +575,7 @@ pub trait AsyncWriteExt: AsyncWrite {
     /// use futures::io::AsyncWriteExt;
     /// use futures::stream::{self, StreamExt};
     ///
-    /// let stream = stream::iter(vec![Ok([1, 2, 3]), Ok([4, 5, 6])]);
+    /// let stream = stream::iter(vec![[1, 2, 3], [4, 5, 6]]);
     ///
     /// let mut writer = vec![];
     ///
